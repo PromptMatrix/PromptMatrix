@@ -169,6 +169,29 @@ Promptmatrix/
 
 ---
 
+## 🏛️ Swarm Runtime Architecture
+
+In multi-agent swarms, LLM prompts are not static text—they are **Behavioral Specifications**. PromptMatrix allows agents to query their system instructions and tool definitions dynamically at runtime, enabling hot-patching of agent swarms without code redeploys or system restarts.
+
+```text
+                    ┌─────────────────────────┐
+                    │  PromptMatrix Registry  │
+                    │  Persona · Tool Schema  │
+                    └────────────┬────────────┘
+                                 │ <5ms serve · hot-patchable
+                                 ▼
+    ┌────────────────────────────┴───────────────────────────┐
+    │    OpenClaw / LangGraph / CrewAI Orchestrator          │
+    │                                                        │
+    │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐   │
+    │  │ Researcher  │─▶│   Writer    │─▶│  Reviewer   │   │
+    │  │ pm.serve()  │  │ pm.serve()  │  │ pm.serve()  │   │
+    │  └─────────────┘  └─────────────┘  └─────────────┘   │
+    └────────────────────────────────────────────────────────┘
+```
+
+---
+
 ## 🚀 Deployment Models
 
 ### 🏠 Local / Self-Hosted (This Repository)
