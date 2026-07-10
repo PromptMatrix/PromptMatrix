@@ -69,105 +69,38 @@ agent.run(system_prompt)
 
 ---
 
-## 🆕 Release v0.2.1: Security Patch + Stability
+## 🚀 Installation & Setup
 
-We have heavily fortified the system for production-ready, zero-trust deployments:
-*   **IDOR Protections:** Enforced strict Multi-Tenant schemas guaranteeing prompt and workspace isolation.
-*   **Security Headers:** Natively integrated `Referrer-Policy` and `Permissions-Policy` in the Security Middleware.
-*   **JWT Integrity:** Pinned symmetric signing algorithms to mitigate CVE-2024-33663 algorithm confusion.
-*   **Strict Pagination:** Data endpoints now cap payloads strictly (e.g., limit=100) protecting against DDOS vector payload expansions.
+PromptMatrix runs locally on SQLite with zero external database dependencies.
 
----
-
-## 🚀 Quick Start
-
-PromptMatrix runs purely on SQLite with zero external database dependencies.
-
-### Option A — pip (Recommended for developers)
-
+### Local Setup
 ```bash
-pip install promptmatrix-cli        # Install the pmx CLI globally
-pmx config set-url http://localhost:8000
-pmx login                           # Authenticate
-pmx list                            # List all prompts
-pmx push assistant.system ./prompt.txt
+git clone https://github.com/PromptMatrix/Promptmatrix.git
+cd Promptmatrix
+./start.sh        # Windows: start.bat
 ```
+*Creates a virtual environment, installs dependencies, handles database migrations, and launches the server at `http://localhost:8000`.*
 
-### Option B — One-click script
-
-**Step 1:** Download the latest `.zip` from the [GitHub Releases](https://github.com/PromptMatrix/Promptmatrix/releases) page and extract it.
-
-**Step 2:** Run the startup script for your system:
-
-**Windows** — Double-click **`start.bat`** — handles venv creation, dependencies, secret generation, and migrations automatically.
-
-**Linux / macOS:**
-```bash
-chmod +x start.sh
-./start.sh
-```
-
-### Option C — Docker (Recommended for Servers)
+### Docker Compose
 ```bash
 docker compose up -d
 ```
 
-### Option D — One-click Cloud Deploy
+### Manual Setup
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+alembic upgrade head
+uvicorn main:app --port 8000
+```
 
+### Cloud Deploy (Vercel)
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/PromptMatrix/Promptmatrix&env=JWT_SECRET_KEY,ENCRYPTION_KEY&envDescription=Generate%20secure%20keys%20with%3A%20python%20-c%20%22import%20secrets%3B%20print(secrets.token_hex(32))%22)
 
-**Access the Visual Governance Dashboard at:** `http://localhost:8000/dashboard`
-
 ---
 
-## 🛠 Manual Installation
-
-```bash
-git clone https://github.com/PromptMatrix/Promptmatrix.git promptmatrix
-cd promptmatrix
-
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-cp .env.example .env      # Auto-generates secure keys on first run
-alembic upgrade head
-
-uvicorn main:app --reload --port 8000
-```
-
----
-
-## 📦 Repository Structure
-
-```
-Promptmatrix/
-├── app/
-│   ├── api/v1/          # FastAPI route handlers (auth, prompts, keys, evals, approvals, etc.)
-│   ├── core/            # Auth logic, policy scanner, email stubs (disabled in local mode)
-│   ├── serve/           # Low-latency prompt serving router + in-memory cache
-│   ├── services/        # Business logic: PromptService, AuthService, AuditService
-│   ├── config.py        # Pydantic settings (reads from .env)
-│   ├── database.py      # SQLAlchemy session + SQLite/PostgreSQL engine
-│   └── models.py        # ORM models (14 tables)
-├── migrations/
-│   └── versions/        # Alembic migration files (upgrades + downgrades)
-├── prompts/             # Default system prompt templates
-├── sdk/                 # Python SDK (pip install promptmatrix)
-│   └── promptmatrix/   # PromptMatrix, AsyncPromptMatrix client classes
-├── tests/               # pytest test suite (74 tests, in-memory SQLite)
-├── main.py              # FastAPI application entry point
-├── pmx.py               # CLI: push, pull, diff, list, eval, promote
-├── Dockerfile           # Multi-stage optimized container image (non-root)
-├── docker-compose.yml   # Production-ready compose configuration
-├── start.sh             # One-click setup for Linux/macOS
-├── start.bat            # One-click setup for Windows
-├── .env.example         # Configuration template (no secrets committed)
-├── requirements.txt     # Python dependencies (no cloud services required)
-└── alembic.ini          # Alembic migration configuration
-```
-
----
 
 ## 🏛️ Swarm Runtime Architecture
 
@@ -297,30 +230,8 @@ The test suite uses an in-memory SQLite database. No external services required.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting a PR.
-Bug reports and feature requests go in [Issues](https://github.com/PromptMatrix/Promptmatrix/issues).
-
-**Good first issues:** look for the `good first issue` label.
-
-**What we accept:**
-- Bug fixes with reproduction steps and tests
-- Documentation improvements
-- Performance improvements to the serve path
-- New eval dimensions (rule-based, no external deps)
-- SDK improvements
-
-**What belongs in a fork/discussion first:**
-- Mandatory cloud service integrations
-- Breaking API changes
-- New external dependencies
-
-**How it works:**
-1. Fork the repo → create a branch (`feat/my-feature`)
-2. Make changes + add tests (`pytest` must pass — 74 tests)
-3. Open a PR with a clear description
-4. Maintainer reviews → merge or feedback
-
-Branch protection is active on `main` — all changes go through PRs.
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for project philosophy, setup steps, and test guidelines.
+Bug reports and feature requests can be opened directly on the [Issues](https://github.com/PromptMatrix/Promptmatrix/issues) page.
 
 ---
 
