@@ -15,7 +15,7 @@ We support only the latest release. Update before reporting.
 
 **Do not open a public GitHub issue for security vulnerabilities.**
 
-Send details to: **security@promptmatrix.io**
+Send details to: **security@promptmatrix.io** or **jachinchsaikiasonowal@gmail.com**
 
 Include:
 - Description of the vulnerability
