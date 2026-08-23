@@ -10,8 +10,8 @@
   </p>
 
   <p>
-    <a href="https://pypi.org/project/promptmatrix/"><img src="https://img.shields.io/pypi/v/promptmatrix.svg?color=blue" alt="PyPI version" /></a>
-    <a href="https://pypi.org/project/promptmatrix/"><img src="https://img.shields.io/pypi/dm/promptmatrix.svg?color=blue" alt="PyPI downloads" /></a>
+    <a href="https://pypi.org/project/promptmatrix-ai/"><img src="https://img.shields.io/pypi/v/promptmatrix-ai.svg?color=blue" alt="PyPI version" /></a>
+    <a href="https://pypi.org/project/promptmatrix-ai/"><img src="https://img.shields.io/pypi/dm/promptmatrix-ai.svg?color=blue" alt="PyPI downloads" /></a>
     <a href="https://github.com/PromptMatrix/Promptmatrix/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" /></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-blue.svg" alt="Python 3.11+" /></a>
     <a href="https://promptmatrix.github.io/docs/"><img src="https://img.shields.io/badge/docs-scalar%20OpenAPI-purple.svg" alt="API Docs" /></a>
