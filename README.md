@@ -157,7 +157,7 @@ Two ways to use the CLI:
 
 **Globally installed (via pip):**
 ```bash
-pip install promptmatrix-cli
+pip install promptmatrix-ai
 pmx login
 pmx push agent.system ./prompt.txt
 pmx pull agent.system ./out.txt
@@ -183,7 +183,7 @@ python pmx.py eval agent.system ./prompt.txt --type rule_based
     PMX_URL: ${{ secrets.PMX_URL }}
     PMX_TOKEN: ${{ secrets.PMX_TOKEN }}
   run: |
-    pip install promptmatrix-cli
+    pip install promptmatrix-ai
     pmx eval agent.system ./prompts/agent.txt --type rule_based
 ```
 
@@ -191,10 +191,10 @@ python pmx.py eval agent.system ./prompt.txt --type rule_based
 
 ## 🐍 Python SDK
 
-For integrating PromptMatrix into your Python application:
+For integrating PromptMatrix into your Python application or agent swarm:
 
 ```bash
-pip install promptmatrix
+pip install promptmatrix-sdk
 ```
 
 ```python
@@ -202,17 +202,16 @@ from promptmatrix import PromptMatrix
 
 pm = PromptMatrix(
     api_key="pm_live_your_key_here",
-    base_url="http://localhost:8000",  # or https://promptmatrixx.vercel.app
+    base_url="https://promptmatrixx.vercel.app",  # or http://localhost:8000 for local OSS
 )
 
 # Hot-path: fetch and render a live prompt
-result = pm.serve("assistant.system")
-system_prompt = result.render(company="Acme", user="Alice")
+prompt_text = pm.serve("assistant.system", variables={"company": "Acme", "user": "Alice"})
 
-# Async (FastAPI, etc.)
+# Async (FastAPI, LangGraph, etc.)
 from promptmatrix import AsyncPromptMatrix
 async with AsyncPromptMatrix(api_key="pm_live_...") as pm:
-    result = await pm.serve("assistant.system")
+    prompt_text = await pm.aserve("assistant.system")
 ```
 
 SDK docs: [promptmatrix-sdk README](https://github.com/PromptMatrix/Promptmatrix/tree/main/sdk#readme)
