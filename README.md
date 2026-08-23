@@ -10,19 +10,21 @@
   </p>
 
   <p>
+    <a href="https://pypi.org/project/promptmatrix/"><img src="https://img.shields.io/pypi/v/promptmatrix.svg?color=blue" alt="PyPI version" /></a>
+    <a href="https://pypi.org/project/promptmatrix/"><img src="https://img.shields.io/pypi/dm/promptmatrix.svg?color=blue" alt="PyPI downloads" /></a>
     <a href="https://github.com/PromptMatrix/Promptmatrix/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="MIT License" /></a>
-    <a href="https://github.com/PromptMatrix/Promptmatrix/releases"><img src="https://img.shields.io/github/v/release/PromptMatrix/Promptmatrix?label=version" alt="Version" /></a>
     <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.11%2B-blue.svg" alt="Python 3.11+" /></a>
-    <img src="https://img.shields.io/badge/SQLite-local--first-orange.svg" alt="Local-first SQLite" />
+    <a href="https://promptmatrix.github.io/docs/"><img src="https://img.shields.io/badge/docs-scalar%20OpenAPI-purple.svg" alt="API Docs" /></a>
+    <a href="https://github.com/PromptMatrix/Promptmatrix/discussions"><img src="https://img.shields.io/badge/community-discussions-brightgreen.svg" alt="Discussions" /></a>
     <a href="https://github.com/PromptMatrix/Promptmatrix/actions"><img src="https://github.com/PromptMatrix/Promptmatrix/actions/workflows/test.yml/badge.svg" alt="CI" /></a>
   </p>
 
   <p>
     <a href="https://promptmatrix.github.io">🌐 Website</a> •
+    <a href="https://promptmatrix.github.io/docs/">📚 API Docs</a> •
     <a href="#-quick-start">Quick Start</a> •
     <a href="#-features">Features</a> •
-    <a href="#-deployment-models">Deployment Models</a> •
-    <a href="#-manual-installation">Manual Installation</a> •
+    <a href="https://github.com/PromptMatrix/Promptmatrix/discussions">💬 Community</a> •
     <a href="https://github.com/PromptMatrix/Promptmatrix/blob/main/LICENSE">MIT License</a>
   </p>
 </div>
